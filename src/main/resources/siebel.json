@@ -1,110 +1,144 @@
 {
-  "startingRoom": "MatthewsStreet",
-  "endingRoom": "Siebel1314",
+  "startingRoom": "Walter White Residence",
+  "endingRoom": "DEA Office",
   "rooms": [
     {
-      "name": "MatthewsStreet",
-      "description": "You are on Matthews, outside the Siebel Center",
+      "name": "Walter White Residence",
+      "description": "You are at the White Residence, where Walter, Skyler, and Walter Jr. live.",
       "directions": [
         {
           "directionName": "East",
-          "room": "SiebelEntry"
+          "room": "Pinkman Residence"
         }
-      ]
+      ],
+      "items": ["money"]
     },
     {
-      "name": "SiebelEntry",
-      "description": "You are in the west entry of Siebel Center. You can see the elevator, the ACM office, and hallways to the north and east.",
+      "name": "Pinkman Residence",
+      "description": "You have arrived at Jesse Pinkman's house, where multiple drug deals have occurred. Be careful!",
       "directions": [
         {
           "directionName": "West",
-          "room": "MatthewsStreet"
+          "room": "Walter White Residence"
         },
         {
           "directionName": "Northeast",
-          "room": "AcmOffice"
+          "room": "Los Pollos Hermanos"
         },
         {
           "directionName": "North",
-          "room": "SiebelNorthHallway"
+          "room": "Fring Laundry"
         },
         {
           "directionName": "East",
-          "room": "SiebelEastHallway"
+          "room": "Tuco Headquarters"
         }
-      ]
+      ],
+      "items": ["drugs", "games"]
     },
     {
-      "name": "AcmOffice",
-      "description": "You are in the ACM office.  There are lots of friendly ACM people.",
+      "name": "Los Pollos Hermanos",
+      "description": "You have reached a fast-food Chicken chain owned by Gustavo Fring, who is most definitely not suspicious",
       "directions": [
         {
           "directionName": "South",
-          "room": "SiebelEntry"
+          "room": "Pinkman Residence"
         }
-      ]
+      ],
+      "items": ["chicken", "methylamine"]
     },
     {
-      "name": "SiebelNorthHallway",
-      "description": "You are in the north hallway.  You can see Siebel 1112 and the door toward NCSA.",
+      "name": "Saul Office",
+      "description": "You are at the office of Saul Goodman, a gifted lawyer with the habit of committing laundering crimes",
       "directions": [
         {
           "directionName": "South",
-          "room": "SiebelEntry"
+          "room": "Pinkman Residence"
         },
         {
           "directionName": "NorthEast",
-          "room": "Siebel1112"
+          "room": "Walt RV"
         }
-      ]
+      ],
+      "items": ["gravel"]
     },
     {
-      "name": "Siebel1112",
-      "description": "You are in Siebel 1112.  There is space for two code reviews in this room.",
+      "name": "Walt RV",
+      "description": "You are in Walt's and Jesse's RV. Try not to step over broken glass and leftover meth. ",
       "directions": [
         {
           "directionName": "West",
-          "room": "SiebelNorthHallway"
+          "room": "Saul Office"
         }
-      ]
+      ],
+      "items": ["guns", "flask", "meth"]
     },
     {
-      "name": "SiebelEastHallway",
-      "description": "You are in the east hallway.  You can see Einstein Bros' Bagels and a stairway.",
+      "name": "Tuco Headquarters",
+      "description": "You are in the headquarters of Tuco Salamanca, an aggressive meth dealer for a penchant for killing and torturing",
       "directions": [
-        {
-          "directionName": "West",
-          "room": "SiebelEntry"
-        },
         {
           "directionName": "South",
-          "room": "Siebel1314"
+          "room": "Fring Laundry"
         },
         {
-          "directionName": "Down",
-          "room": "SiebelBasement"
+          "directionName": "East",
+          "room": "Vamanos Control"
         }
-      ]
+      ],
+      "items": ["guns"]
     },
     {
-      "name": "Siebel1314",
-      "description": "You are in Siebel 1314.  There are happy CS 126 students doing a code review.",
+      "name": "Fring Laundry",
+      "description": "You are at Gustavo Fring's Laundry Company, a place used as a front to make high-concentration meth",
       "directions": [
         {
           "directionName": "North",
-          "room": "SiebelEastHallway"
+          "room": "Tuco Headquarters"
+        },
+        {
+          "directionName": "SouthEast",
+          "room": "Vamanos Control"
         }
-      ]
+      ],
+      "items": ["knife", "apron"]
     },
     {
-      "name": "SiebelBasement",
-      "description": "You are in the basement of Siebel.  You see tables with students working and door to computer labs.",
+      "name": "Vamanos Control",
+      "description": "You are at Vamanos Pest Control, used by Walt and Jesse to use pest-infested homes as temporary labs to make meth",
       "directions": [
         {
           "directionName": "Up",
-          "room": "SiebelEastHallway"
+          "room": "A1A CarWash"
         }
-      ]
+      ],
+      "items": ["repellents", "hazmat"]
+    },
+    {
+      "name": "A1A CarWash",
+      "description": "You are at A1A Carwash, a place where Walt used to work as a cashier but is used as a money-laundering business later in the show",
+      "directions": [
+        {
+          "directionName": "Down",
+          "room": "Vamanos Control"
+        },
+        {
+          "directionName": "East",
+          "room": "DEA Office"
+        }
+      ],
+      "items": ["sponge", "money"]
+    },
+    {
+      "name": "DEA Office",
+      "description": "You are at the DEA Office, where Hank Schrader and his partners to hunt down Heisenberg, Walter's pseudonym",
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "A1A CarWash"
+        }
+      ],
+      "items": ["badge", "pistol"]
     }
   ]
 }

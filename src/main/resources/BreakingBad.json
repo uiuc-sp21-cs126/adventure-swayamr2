@@ -1,106 +1,118 @@
 {
-  "startingRoom": "WalterWhiteResidence",
-  "endingRoom": "DEAOffice",
+  "startingRoom": "Walter White Residence",
+  "endingRoom": "DEA Office",
   "rooms": [
     {
-      "name": "WalterWhiteResidence",
+      "name": "Walter White Residence",
       "description": "You are at the White Residence, where Walter, Skyler, and Walter Jr. live.",
       "directions": [
         {
           "directionName": "East",
-          "room": "PinkmanResidence"
+          "room": "Pinkman Residence"
         }
-      ]
+      ],
+      "items": ["money"]
     },
     {
-      "name": "PinkmanResidence",
+      "name": "Pinkman Residence",
       "description": "You have arrived at Jesse Pinkman's house, where multiple drug deals have occurred. Be careful!",
       "directions": [
         {
           "directionName": "West",
-          "room": "WalterWhiteResidence"
+          "room": "Walter White Residence"
         },
         {
           "directionName": "Northeast",
-          "room": "LosPollosHermanos"
+          "room": "Los Pollos Hermanos"
         },
         {
           "directionName": "North",
-          "room": "FringLaundryFront"
+          "room": "Fring Laundry"
         },
         {
           "directionName": "East",
-          "room": "TucoHeadquarters"
+          "room": "Tuco Headquarters"
         }
-      ]
+      ],
+      "items": ["drugs", "games"]
     },
     {
-      "name": "LosPollosHermanos",
-      "description": "You have reached a fast-food Chicken restaurant owned by Gustavo Fring, who is most definitely not suspicious",
+      "name": "Los Pollos Hermanos",
+      "description": "You have reached a fast-food Chicken chain owned by Gustavo Fring, who is most definitely not suspicious",
       "directions": [
         {
           "directionName": "South",
-          "room": "PinkmanResidence"
+          "room": "Pinkman Residence"
         }
-      ]
+      ],
+      "items": ["chicken", "methylamine"]
     },
     {
-      "name": "SaulOffice",
+      "name": "Saul Office",
       "description": "You are at the office of Saul Goodman, a gifted lawyer with the habit of committing laundering crimes",
       "directions": [
         {
           "directionName": "South",
-          "room": "PinkmanResidence"
+          "room": "Pinkman Residence"
         },
         {
           "directionName": "NorthEast",
-          "room": "WaltsRV"
+          "room": "Walt RV"
         }
-      ]
+      ],
+      "items": ["gravel"]
     },
     {
-      "name": "WaltsRV",
+      "name": "Walt RV",
       "description": "You are in Walt's and Jesse's RV. Try not to step over broken glass and leftover meth. ",
       "directions": [
         {
           "directionName": "West",
-          "room": "SaulOffice"
+          "room": "Saul Office"
         }
-      ]
+      ],
+      "items": ["flask", "masks", "money"]
     },
     {
-      "name": "TucosHeadquarters",
+      "name": "Tuco Headquarters",
       "description": "You are in the headquarters of Tuco Salamanca, an aggressive meth dealer for a penchant for killing and torturing",
       "directions": [
         {
-          "directionName": "West",
-          "room": "PinkmanResidence"
+          "directionName": "South",
+          "room": "Fring Laundry"
         },
         {
-          "directionName": "South",
-          "room": "FringLaundryFront"
+          "directionName": "East",
+          "room": "Vamanos Control"
         }
-      ]
+      ],
+      "items": ["guns"]
     },
     {
-      "name": "FringLaundryFront",
-      "description": "You are at Gustavo Fring's Laundry Company, a place used as a front to make high-concentration meth and distributing",
+      "name": "Fring Laundry",
+      "description": "You are at Gustavo Fring's Laundry Company, a place used as a front to make high-concentration meth",
       "directions": [
         {
           "directionName": "North",
-          "room": "TucosHeadquarters"
+          "room": "Tuco Headquarters"
+        },
+        {
+          "directionName": "SouthEast",
+          "room": "Vamanos Control"
         }
-      ]
+      ],
+      "items": ["knife", "apron"]
     },
     {
-      "name": "VamanosPestControl",
+      "name": "Vamanos Control",
       "description": "You are at Vamanos Pest Control, used by Walt and Jesse to use pest-infested homes as temporary labs to make meth",
       "directions": [
         {
           "directionName": "Up",
-          "room": "A1ACarWash"
+          "room": "A1A CarWash"
         }
-      ]
+      ],
+      "items": ["repellents"]
     },
     {
       "name": "A1A CarWash",
@@ -108,23 +120,27 @@
       "directions": [
         {
           "directionName": "Down",
-          "room": "VamanosPestControl"
+          "room": "Vamanos Control"
         },
         {
           "directionName": "East",
-          "room": "DEAOffice"
+          "room": "DEA Office"
         }
+      ],
+      "items": [
+        "sponge, money"
       ]
     },
     {
-      "name": "DEAOffice",
+      "name": "DEA Office",
       "description": "You are at the DEA Office, where Hank Schrader and his partners to hunt down Heisenberg, Walter's pseudonym",
       "directions": [
         {
           "directionName": "West",
-          "room": "A1ACarWash"
+          "room": "A1A CarWash"
         }
-      ]
+      ],
+      "items": ["pistol", "badge"]
     }
   ]
 }
