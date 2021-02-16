@@ -29,4 +29,9 @@ public class DirectionsOnMap {
     public String getRoom() {
         return room;
     }
+
+    public DirectionsOnMap(String directionName, String roomName) {
+        this.directionName = directionName;
+        this.room = roomName;
+    }
 }

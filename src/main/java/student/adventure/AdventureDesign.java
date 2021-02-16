@@ -1,5 +1,7 @@
 package student.adventure;
 
+import java.util.Random;
+
 public class AdventureDesign {
 
     //the full list of rooms in the JSON file
@@ -36,5 +38,12 @@ public class AdventureDesign {
      */
     public Room[] getRooms() {
         return rooms;
+    }
+
+
+    public AdventureDesign(String startingRoom, String endingRoom, Room[] rooms) {
+        this.startingRoom = startingRoom;
+        this.endingRoom = endingRoom;
+        this.rooms = rooms;
     }
 }

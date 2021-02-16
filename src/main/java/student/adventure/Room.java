@@ -53,4 +53,11 @@ public class Room {
     public void setNewItems(String[] newItems) {
         items = newItems;
     }
+
+    public Room(String name, String description, String[] items, DirectionsOnMap[] directions) {
+        this.name = name;
+        this.description = description;
+        this.items = items;
+        this.directions = directions;
+    }
 }
