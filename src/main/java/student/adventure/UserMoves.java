@@ -19,15 +19,25 @@ public class UserMoves {
         ArrayList<String> allPossibleDirections = new ArrayList<>();
         DirectionsOnMap[] directions = currentRoom.getDirections();
         for(DirectionsOnMap directionName: directions) {
+            //Stores all of the possible direction names one can travel in using a String ArrayList
             allPossibleDirections.add(directionName.getDirectionName());
         }
         System.out.println("From here, you can go: " + allPossibleDirections);
     }
+
+    /**
+     * This method decides whether a room is at the start or end of the adventure, and prints out statements
+     * @param currentRoom - the current state of the player
+     * @param startingRoom - the starting room of the adventure
+     * @param endingRoom - the ending room of the adventure
+     */
     public static void beginningOrEnd(Room currentRoom, String startingRoom, String endingRoom) {
         if(currentRoom.getName().equalsIgnoreCase(startingRoom)) {
+            //Prints out prompt
             System.out.println("Welcome to the Adventure! Step into the world of Breaking Bad! ");
         }
         if(currentRoom.getName().equalsIgnoreCase(endingRoom)) {
+            //Prints out prompt and exits game
             System.out.println("Thank you for playing! Goodbye");
             System.exit(0);
         }
@@ -41,20 +51,25 @@ public class UserMoves {
      * @return newRoom - The new room one is in
      */
     public static Room updateRoom(Room currentRoom, String newDirection, AdventureDesign design) {
+        //Checks for null
         if(newDirection == null) {
             System.out.println("This is a null input");
             return currentRoom;
         }
         DirectionsOnMap[] currentDirections = currentRoom.getDirections();
+        //Loops through the directions possible for the room
         for (DirectionsOnMap direction : currentDirections) {
+            //If there is a match between the input direction and the possible options, it updates the room name
             if(direction.getDirectionName().equalsIgnoreCase(newDirection.trim())) {
                 String futureRoom = direction.getRoom();
+                //Using the new Room name, it creates a new updatedRoom that stores the room with the specific name
                 for (Room updatedRoom : design.getRooms())
                     if (updatedRoom.getName().equals(futureRoom)) {
                         return updatedRoom;
                     }
             }
         }
+        //Returns out the current state of the room if it cannot find a match
         System.out.println("I cannot understand " + newDirection);
         return currentRoom;
     }
@@ -73,24 +88,29 @@ public class UserMoves {
      * @param currentRoom - the room being traversed
      * @param pickedItem - the item that is being taken
      * @param itemList - the user list of the items
-     * @return
      */
     public static void takeItem(Room currentRoom, String pickedItem, ArrayList<String> itemList) {
         if(pickedItem == null) {
             System.out.println("This is a null input");
         }
         ArrayList<String> fullItemList = new ArrayList<>();
+        //Adds all of the items in the room into a list
         Collections.addAll(fullItemList, currentRoom.getItems());
         for(String item : currentRoom.getItems()) {
+            //Loops through the current item state to find a match
             if (item.equalsIgnoreCase(pickedItem.trim())) {
+                //Adds the item to the user list of items
                 itemList.add(pickedItem);
+                //removes the item room
                 fullItemList.remove(pickedItem);
                 String[] newItems = new String[fullItemList.size()];
                 fullItemList.toArray(newItems);
+                //sets the items in the room to the new, updated version
                 currentRoom.setNewItems(newItems);
                 UserMoves.roomDetails(currentRoom);
             }
         }
+        //Prints out statement if it cannot find item in the room
         System.out.println("There is no " + pickedItem + " in this location!");
         UserMoves.roomDetails(currentRoom);
     }
@@ -103,17 +123,23 @@ public class UserMoves {
      */
     public static void dropItem(Room currentRoom, String pickedItem, ArrayList<String> itemList) {
         ArrayList<String> fullItemList = new ArrayList<>();
+        //Adds all of the items in the room into a list
         Collections.addAll(fullItemList, currentRoom.getItems());
+        //Loops through USER ITEM LIST to find match
         for(String iterating : itemList) {
             if (iterating.equalsIgnoreCase(pickedItem)) {
+                //Removes the item from the user list
                 itemList.remove(pickedItem);
+                //Adds it to the list used by the room
                 fullItemList.add(pickedItem);
                 String[] newItems = new String[fullItemList.size()];
                 fullItemList.toArray(newItems);
+                //Sets the list with the added item to the current state of the room
                 currentRoom.setNewItems(newItems);
                 UserMoves.roomDetails(currentRoom);
             }
         }
+        //Prints out statement if it cannot drop the item
         System.out.println("You do not have a " + pickedItem + "!");
         UserMoves.roomDetails(currentRoom);
     }

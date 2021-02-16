@@ -30,6 +30,11 @@ public class DirectionsOnMap {
         return room;
     }
 
+    /**
+     * Full constructor for the DirectionsOnMap class
+     * @param directionName - name of the direction(north, east, south, west, etc.)
+     * @param roomName - name of the room in said direction
+     */
     public DirectionsOnMap(String directionName, String roomName) {
         this.directionName = directionName;
         this.room = roomName;

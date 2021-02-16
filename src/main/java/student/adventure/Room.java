@@ -54,6 +54,13 @@ public class Room {
         items = newItems;
     }
 
+    /**
+     * Full constructor for the Room class
+     * @param name - name of the room
+     * @param description - description of the room
+     * @param items - items located in the room
+     * @param directions - possible locations from the room
+     */
     public Room(String name, String description, String[] items, DirectionsOnMap[] directions) {
         this.name = name;
         this.description = description;

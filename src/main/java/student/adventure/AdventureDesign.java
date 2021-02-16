@@ -40,7 +40,12 @@ public class AdventureDesign {
         return rooms;
     }
 
-
+    /**
+     * Complete constructor for the AdventureDesign class
+     * @param startingRoom - the starting room of the adventure
+     * @param endingRoom - the ending room of the adventure
+     * @param rooms - the full array of the rooms available
+     */
     public AdventureDesign(String startingRoom, String endingRoom, Room[] rooms) {
         this.startingRoom = startingRoom;
         this.endingRoom = endingRoom;
