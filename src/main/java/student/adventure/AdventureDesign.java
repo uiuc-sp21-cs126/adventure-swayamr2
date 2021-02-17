@@ -1,7 +1,5 @@
 package student.adventure;
 
-import java.util.Random;
-
 public class AdventureDesign {
 
     //the full list of rooms in the JSON file
@@ -11,11 +9,9 @@ public class AdventureDesign {
     //the name of the room that one ends in, stored in a String
     public String endingRoom;
 
-    //Empty constructor for Jackson Mapping
     public AdventureDesign() {
 
     }
-
     /**
      * getter to retrieve the starting room of the adventure
      * @return startingRoom

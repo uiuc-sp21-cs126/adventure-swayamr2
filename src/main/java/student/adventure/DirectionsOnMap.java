@@ -9,11 +9,10 @@ public class DirectionsOnMap {
     private String directionName;
     //the next room one will go in following the currentDirection
     private String room;
-    // Empty constructor for Jackson Mapping
+
     public DirectionsOnMap() {
 
     }
-
     /**
      * getter to retrieve the name of the direction
      * @return directionName

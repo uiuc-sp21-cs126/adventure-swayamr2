@@ -108,6 +108,7 @@ public class UserMoves {
                 //sets the items in the room to the new, updated version
                 currentRoom.setNewItems(newItems);
                 UserMoves.roomDetails(currentRoom);
+                return;
             }
         }
         //Prints out statement if it cannot find item in the room
@@ -126,8 +127,8 @@ public class UserMoves {
         //Adds all of the items in the room into a list
         Collections.addAll(fullItemList, currentRoom.getItems());
         //Loops through USER ITEM LIST to find match
-        for(String iterating : itemList) {
-            if (iterating.equalsIgnoreCase(pickedItem)) {
+        for(String allItems : itemList) {
+            if (allItems.equalsIgnoreCase(pickedItem)) {
                 //Removes the item from the user list
                 itemList.remove(pickedItem);
                 //Adds it to the list used by the room
@@ -137,6 +138,7 @@ public class UserMoves {
                 //Sets the list with the added item to the current state of the room
                 currentRoom.setNewItems(newItems);
                 UserMoves.roomDetails(currentRoom);
+                break;
             }
         }
         //Prints out statement if it cannot drop the item
