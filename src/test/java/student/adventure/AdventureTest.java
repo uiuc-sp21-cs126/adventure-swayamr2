@@ -126,7 +126,7 @@ public class AdventureTest {
         assertEquals(CurrentRoom, UserMoves.updateRoom(CurrentRoom, null, testDesign));
     }
     /*
-    Tests a "take" method for a valid item in the room
+    Tests a "take" method for a valid item input in the room
      */
     @Test
     public void testTakeValidInput() {
