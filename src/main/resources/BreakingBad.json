@@ -11,7 +11,8 @@
           "room": "Pinkman Residence"
         }
       ],
-      "items": ["money", "hat"]
+      "items": ["money", "hat"],
+      "imageURL": "https://images.app.goo.gl/1XD5Qn8HT4Kehjft5"
     },
     {
       "name": "Pinkman Residence",
@@ -34,7 +35,8 @@
           "room": "Tuco Headquarters"
         }
       ],
-      "items": ["drugs", "video game"]
+      "items": ["drugs", "video game"],
+      "imageURL": "https://images.app.goo.gl/5PtAw8AjckKPSege8"
     },
     {
       "name": "Los Pollos Hermanos",
@@ -53,7 +55,8 @@
           "room": "Saul Office"
         }
       ],
-      "items": ["chicken", "methylamine", "fry batter"]
+      "items": ["chicken", "methylamine", "fry batter"],
+      "imageURL": "https://images.app.goo.gl/HpURdSmWBWbBq2WY9"
     },
     {
       "name": "Saul Office",
@@ -68,7 +71,8 @@
           "room": "Walt RV"
         }
       ],
-      "items": ["gravel", "mug", "glasses"]
+      "items": ["gravel", "mug", "glasses"],
+      "imageURL": "https://images.app.goo.gl/KQRsxfpFvsL2zJgN7"
     },
     {
       "name": "Walt RV",
@@ -83,7 +87,8 @@
           "room": "Vamanos Control"
         }
       ],
-      "items": ["flask", "gas mask"]
+      "items": ["flask", "gas mask"],
+      "imageURL": "https://images.app.goo.gl/F8yb4eDrdYin9ukJ8"
     },
     {
       "name": "Tuco Headquarters",
@@ -102,7 +107,8 @@
           "room": "Pinkman Residence"
         }
       ],
-      "items": ["grill, gun"]
+      "items": ["grill, gun"],
+      "imageURL": "https://images.app.goo.gl/pkL5Zm1DJfQvtcQe7"
     },
     {
       "name": "Fring Laundry",
@@ -117,7 +123,8 @@
           "room": "Walt RV"
         }
       ],
-      "items": ["knife", "apron"]
+      "items": ["knife", "apron"],
+      "imageURL": "https://images.app.goo.gl/RUD3FUtDcefPDmJW9"
     },
     {
       "name": "Vamanos Control",
@@ -128,7 +135,8 @@
           "room": "A1A CarWash"
         }
       ],
-      "items": ["repellent", "hazmat suit"]
+      "items": ["repellent", "hazmat suit"],
+      "imageURL": "https://images.app.goo.gl/dgYm23xT6byLTCsWA"
     },
     {
       "name": "A1A CarWash",
@@ -145,7 +153,8 @@
       ],
       "items": [
         "sponge", "money"
-      ]
+      ],
+      "imageURL": "https://images.app.goo.gl/wipbYE86Q1k55K7h7"
     },
     {
       "name": "DEA Office",
@@ -156,7 +165,8 @@
           "room": "A1A CarWash"
         }
       ],
-      "items": ["pistol", "badge", "mugshot"]
+      "items": ["pistol", "badge", "mugshot"],
+      "imageURL": "https://images.app.goo.gl/kasmq6mNnRCm1Brz5"
     }
   ]
 }

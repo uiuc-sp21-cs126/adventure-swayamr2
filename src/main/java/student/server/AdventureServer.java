@@ -2,6 +2,7 @@ package student.server;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,6 +43,14 @@ public class AdventureServer {
     }
 
     public static HttpServer createServer(final Class<?> resourceClass) throws IOException {
+
+        Logger l = Logger.getLogger("org.glassfish.grizzly.http.server.HttpHandler");
+        l.setLevel(Level.FINE);
+        l.setUseParentHandlers(false);
+        ConsoleHandler ch = new ConsoleHandler();
+        ch.setLevel(Level.ALL);
+        l.addHandler(ch);
+
         final ResourceConfig resourceConfig = new ResourceConfig(resourceClass);
         resourceConfig.register(
                 new LoggingFeature(Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME), Level.INFO, Verbosity.PAYLOAD_ANY, 10000)

@@ -1,5 +1,7 @@
 package student.adventure;
 
+import java.util.ArrayList;
+
 public class Room {
     //name of the room/location
     private String name;
@@ -9,6 +11,7 @@ public class Room {
     private String[] items;
     //the directions that one can go in at that certain location
     private DirectionsOnMap[] directions;
+    private String imageURL;
 
     //Empty constructor for Jackson Mapping
     public Room() {
@@ -38,6 +41,9 @@ public class Room {
         return items;
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
     /**
      * getter to retrieve the directions in the room, stored in a different class DirectionsOnMap
      * @return directions
@@ -61,10 +67,11 @@ public class Room {
      * @param items - items located in the room
      * @param directions - possible locations from the room
      */
-    public Room(String name, String description, String[] items, DirectionsOnMap[] directions) {
+    public Room(String name, String description, String[] items, String imageURL, DirectionsOnMap[] directions) {
         this.name = name;
         this.description = description;
         this.items = items;
+        this.imageURL = imageURL;
         this.directions = directions;
     }
 }
