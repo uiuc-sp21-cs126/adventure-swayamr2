@@ -1,5 +1,7 @@
 package student.server;
 
+import student.adventure.AdventureDesign;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -9,7 +11,7 @@ public class AdventureResource {
     /**
      * The single static adventure service instance used for this API.
      */
-    private static BreakingBadAdventureService breakingBadAdventureService;
+    private static AdventureService breakingBadAdventureService = new BreakingBadAdventureService();
 
     /**
      * The API endpoint to test connectivity.

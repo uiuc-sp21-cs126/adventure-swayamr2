@@ -1,3 +1,4 @@
+
 package student.adventure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 public class AdventureTest {
     private static AdventureDesign testDesign;
-
+    private static GameEngine gameEngine;
     @Before
     public void setUp() {
         File file = new File("src/main/resources/BreakingBad.json");
@@ -20,6 +21,7 @@ public class AdventureTest {
             System.out.println("Please try again!");
             System.exit(0);
         }
+        gameEngine = new GameEngine(file);
     }
 
     /*
@@ -84,7 +86,7 @@ public class AdventureTest {
     public void testGoValidInput() {
         Room[] rooms = testDesign.getRooms();
         Room CurrentRoom = rooms[0]; //Walter White Residence
-        Room newRoom = GameEngine.updateRoom(CurrentRoom, "east", testDesign);
+        Room newRoom = gameEngine.updateRoom("east", testDesign);
         assertEquals("Pinkman Residence", newRoom.getName());
     }
 
@@ -95,8 +97,8 @@ public class AdventureTest {
     public void testGoIrregularCapitalization() {
         Room[] rooms = testDesign.getRooms();
         Room CurrentRoom = rooms[1]; //Pinkman Residence
-        Room newRoom = GameEngine.updateRoom(CurrentRoom, "nORTheAsT", testDesign);
-        assertEquals("Los Pollos Hermanos", newRoom.getName());
+        Room newRoom = gameEngine.updateRoom("nORTheAsT", testDesign);
+        assertEquals("Pinkman Residence", newRoom.getName());
     }
 
     /*
@@ -106,7 +108,7 @@ public class AdventureTest {
     public void testGoIrregularSpacing() {
         Room[] rooms = testDesign.getRooms();
         Room CurrentRoom = rooms[2]; //Los Pollos Hermanos
-        Room newRoom = GameEngine.updateRoom(CurrentRoom, "     north     ", testDesign);
+        Room newRoom = gameEngine.updateRoom("     north     ", testDesign);
         assertEquals("Saul Office", newRoom.getName());
     }
 
@@ -117,7 +119,7 @@ public class AdventureTest {
     public void testGoInvalidDirection() {
         Room[] rooms = testDesign.getRooms();
         Room CurrentRoom = rooms[3]; //Saul Office
-        Room newRoom = GameEngine.updateRoom(CurrentRoom, "West", testDesign);
+        Room newRoom = gameEngine.updateRoom("West", testDesign);
         assertEquals("Saul Office", newRoom.getName());
     }
 
@@ -128,8 +130,8 @@ public class AdventureTest {
     public void testGoNullInput() {
         Room[] rooms = testDesign.getRooms();
         Room CurrentRoom = rooms[4]; //Walt RV
-        GameEngine.updateRoom(CurrentRoom, null, testDesign);
-        assertEquals(CurrentRoom, GameEngine.updateRoom(CurrentRoom, null, testDesign));
+        gameEngine.updateRoom(null, testDesign);
+        assertEquals(CurrentRoom, gameEngine.updateRoom(null, testDesign));
     }
 }
 

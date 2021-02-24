@@ -13,25 +13,13 @@ import java.util.Scanner;
 
 /**
  * Main class that uses a scanner input to call methods, and is used as a UI. Commands include "go", "take",
- * "drop", "examine", and more. Accounts for spelling and spacing errors.
+ * "drop", "examine", and more. Accounts for spelling and spacing errors. This class also stores the server
+ * for the API.
  */
 public class Main {
 
-    public static void main(String[] args) {
-        HttpServer server = null;
-        try {
-            server = AdventureServer.createServer(AdventureResource.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            server.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        GameEngine gameEngine = new GameEngine();
-        File file = new File("src/main/resources/BreakingBad.json");
-        gameEngine.startGame(file);
-        gameEngine.playGame();
+    public static void main(String[] args) throws IOException {
+        HttpServer server = AdventureServer.createServer(AdventureResource.class);
+        server.start();
     }
 }
