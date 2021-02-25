@@ -11,7 +11,7 @@ public class AdventureResource {
     /**
      * The single static adventure service instance used for this API.
      */
-    private static AdventureService breakingBadAdventureService = new BreakingBadAdventureService();
+    private static BreakingBadAdventureService breakingBadAdventureService = new BreakingBadAdventureService();
 
     /**
      * The API endpoint to test connectivity.

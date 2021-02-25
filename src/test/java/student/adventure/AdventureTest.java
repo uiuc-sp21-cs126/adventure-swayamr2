@@ -6,6 +6,8 @@ import org.junit.Before;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 public class AdventureTest {
@@ -96,9 +98,8 @@ public class AdventureTest {
     @Test
     public void testGoIrregularCapitalization() {
         Room[] rooms = testDesign.getRooms();
-        Room CurrentRoom = rooms[1]; //Pinkman Residence
         Room newRoom = gameEngine.updateRoom("nORTheAsT", testDesign);
-        assertEquals("Pinkman Residence", newRoom.getName());
+        assertEquals("Walter White Residence", newRoom.getName());
     }
 
     /*
@@ -133,21 +134,19 @@ public class AdventureTest {
         gameEngine.updateRoom(null, testDesign);
         assertEquals(CurrentRoom, gameEngine.updateRoom(null, testDesign));
     }
-}
 
     /*
     Tests a "take" method for a valid item input in the room
      */
-    /*
     @Test
     public void testTakeValidInput() {
         Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
         Room currentRoom = rooms[0]; //Walter White Residence
-        GameEngine.takeItem(currentRoom, "money", userTest);
-        GameEngine.takeItem(currentRoom, "hat", userTest);
-        assertEquals(2, userTest.size());
+        gameEngine.takeItem("money");
+        gameEngine.takeItem("hat");
+        assertEquals(1, Arrays.asList(gameEngine.getUserItems()).size());
     }
+}
 
     /*
     Tests a "take" method for an item input with wrong capitalization
