@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class AdventureTest {
     private static AdventureDesign testDesign;
     private static GameEngine gameEngine;
+
     @Before
     public void setUp() {
         File file = new File("src/main/resources/BreakingBad.json");
@@ -97,9 +98,8 @@ public class AdventureTest {
      */
     @Test
     public void testGoIrregularCapitalization() {
-        Room[] rooms = testDesign.getRooms();
-        Room newRoom = gameEngine.updateRoom("nORTheAsT", testDesign);
-        assertEquals("Walter White Residence", newRoom.getName());
+        Room newRoom = gameEngine.updateRoom("EAsT", testDesign);
+        assertEquals("Pinkman Residence", newRoom.getName());
     }
 
     /*
@@ -107,10 +107,8 @@ public class AdventureTest {
      */
     @Test
     public void testGoIrregularSpacing() {
-        Room[] rooms = testDesign.getRooms();
-        Room CurrentRoom = rooms[2]; //Los Pollos Hermanos
-        Room newRoom = gameEngine.updateRoom("     north     ", testDesign);
-        assertEquals("Saul Office", newRoom.getName());
+        Room newRoom = gameEngine.updateRoom("     east    ", testDesign);
+        assertEquals("Pinkman Residence", newRoom.getName());
     }
 
     /*
@@ -118,23 +116,9 @@ public class AdventureTest {
      */
     @Test
     public void testGoInvalidDirection() {
-        Room[] rooms = testDesign.getRooms();
-        Room CurrentRoom = rooms[3]; //Saul Office
         Room newRoom = gameEngine.updateRoom("West", testDesign);
-        assertEquals("Saul Office", newRoom.getName());
+        assertEquals("Walter White Residence", newRoom.getName());
     }
-
-    /*
-    Tests a "go" method for a null direction
-     */
-    @Test
-    public void testGoNullInput() {
-        Room[] rooms = testDesign.getRooms();
-        Room CurrentRoom = rooms[4]; //Walt RV
-        gameEngine.updateRoom(null, testDesign);
-        assertEquals(CurrentRoom, gameEngine.updateRoom(null, testDesign));
-    }
-
     /*
     Tests a "take" method for a valid item input in the room
      */
@@ -146,103 +130,71 @@ public class AdventureTest {
         gameEngine.takeItem("hat");
         assertEquals(1, Arrays.asList(gameEngine.getUserItems()).size());
     }
-}
 
     /*
     Tests a "take" method for an item input with wrong capitalization
-
+    */
     @Test
     public void testTakeIrregularCapitalization() {
-        Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
-        Room currentRoom = rooms[1]; //Jesse Pinkman Residence
-        UserMoves.takeItem(currentRoom, "dRuGs", userTest);
-        UserMoves.takeItem(currentRoom, "viDEo GAME", userTest);
-        assertEquals(2, userTest.size());
+        gameEngine.takeItem("mOnEy");
+        gameEngine.takeItem("HaT");
+        assertEquals(2, gameEngine.getUserItems().size());
     }
 
     /*
     Tests a "take" method for an item input with weird spacing
+    */
     @Test
     public void testTakeIrregularSpacing() {
         Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
-        Room currentRoom = rooms[2]; //Los Pollos Hermanos
-        UserMoves.takeItem(currentRoom, "      chicken", userTest);
-        UserMoves.takeItem(currentRoom, "methylamine     ", userTest);
-        UserMoves.takeItem(currentRoom, "    fry batter        ", userTest);
-        assertEquals(3, userTest.size());
+        gameEngine.takeItem("      money");
+        gameEngine.takeItem("hat   ");
+        assertEquals(2, gameEngine.getUserItems().size());
     }
-    */
+
     /*
     Tests a "take" method for an invalid item input
-
+    */
     @Test
     public void testTakeInvalidInput() {
-        Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
-        Room currentRoom = rooms[3]; //Saul Office
-        UserMoves.takeItem(currentRoom, "hello", userTest);
-        assertEquals(0, userTest.size());
+        gameEngine.takeItem("hello");
+        assertEquals(0, gameEngine.getUserItems().size());
     }
-    */
+
     /*
     Tests a "drop" method for a proper input
      */
-    /*
     @Test
     public void testDropValidInput() {
-        Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
-        userTest.add("money");
-        Room currentRoom = rooms[0]; //Walter White Residence
-        UserMoves.dropItem(currentRoom, "money", userTest);
-        assertEquals(0, userTest.size());
+        gameEngine.takeItem("money");
+        gameEngine.dropItem("money");
+        assertEquals(0, gameEngine.getUserItems().size());
     }
-    /*
-     */
     /*
     Tests a "drop" method for wrong capitalization
      */
-    /*
     @Test
     public void testDropIrregularCapitalization() {
-        Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
-        userTest.add("mOnEy");
-        Room currentRoom = rooms[0]; //Walter White Residence
-        UserMoves.dropItem(currentRoom, "mOnEy", userTest);
-        assertEquals(0, userTest.size());
+        gameEngine.takeItem("mOnEY");
+        gameEngine.dropItem("MoNEY");
+        assertEquals(0, gameEngine.getUserItems().size());
     }
     /*
     Tests a "drop" method for weird spacing
      */
-    /*
     @Test
     public void testDropIrregularSpacing() {
-        Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
-        userTest.add("   chicken");
-        userTest.add("methylamine     ");
-        userTest.add("   fry batter   ");
-        Room currentRoom = rooms[2]; //Los Pollos Hermanos
-        UserMoves.dropItem(currentRoom, "   chicken", userTest);
-        UserMoves.dropItem(currentRoom, "methylamine     ", userTest);
-        assertEquals(1, userTest.size());
+        gameEngine.takeItem("      hat");
+        gameEngine.dropItem("hat      ");
+        assertEquals(0, gameEngine.getUserItems().size());
     }
     /*
     Tests a "drop" method for invalid item inputs
      */
-    /*
     @Test
     public void testDropInvalidInput() {
-        Room[] rooms = testDesign.getRooms();
-        ArrayList<String> userTest = new ArrayList<>();
-        Room currentRoom = rooms[9]; //DEA Office
-        userTest.add("pistol");
-        userTest.add("badge");
-        userTest.add("mugshot");
-        UserMoves.dropItem(currentRoom, "nothing", userTest);
-        assertEquals(3, userTest.size());
+        gameEngine.takeItem(" MONEY    ");
+        gameEngine.dropItem("bitcoin");
+        assertEquals(1, gameEngine.getUserItems().size());
     }
-    */
+}

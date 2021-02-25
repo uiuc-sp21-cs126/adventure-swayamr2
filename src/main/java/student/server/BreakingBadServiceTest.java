@@ -43,11 +43,17 @@ public class BreakingBadServiceTest {
         bbService = new BreakingBadAdventureService();
 
     }
+    /*
+    Tests the creation of a new GameStatus object
+     */
     @Test
-    public void testNewGame() throws AdventureException {
+    public void testNewGameEngine() throws AdventureException {
         bbService.reset();
         assertEquals(bbService.newGame(), 1);
     }
+    /*
+    Tests the destruction of a new GameStatus object
+     */
     @Test
     public void testDestroyOnWeb() throws AdventureException {
         bbService.reset();
@@ -55,6 +61,9 @@ public class BreakingBadServiceTest {
         boolean gameOver = bbService.destroyGame(1);
         assertEquals(gameOver, true);
     }
+    /*
+    Tests the go command on the BreakingBad Adventure Service class
+     */
     @Test
     public void TestGoOnWeb() throws AdventureException {
         bbService.reset();
@@ -70,6 +79,9 @@ public class BreakingBadServiceTest {
         String message = gameEngine.displayRoom(testRoom);
         assertEquals(message, bbService.getGame(1).getMessage());
     }
+    /*
+    Tests the take command on the BreakingBad Adventure Service class
+     */
     @Test
     public void TestTakeOnWeb() throws AdventureException {
         bbService.reset();
@@ -79,6 +91,9 @@ public class BreakingBadServiceTest {
         gameEngine.takeItem("money");
         assertEquals(bbService.getGame(1).getCommandOptions().get("take"), gameEngine.getRoomItems());
     }
+    /*
+    Tests the drop command on the BreakingBad Adventure Service class
+     */
     @Test
     public void TestDropOnWeb() throws AdventureException {
         bbService.reset();
@@ -91,6 +106,9 @@ public class BreakingBadServiceTest {
         gameEngine.dropItem("money");
         assertEquals(bbService.getGame(1).getCommandOptions().get("take"), gameEngine.getRoomItems());
     }
+    /*
+    Tests the examine command on the BreakingBad Adventure Service class
+     */
     @Test
     public void TestExamineOnWeb() throws AdventureException {
         bbService.reset();
@@ -99,6 +117,9 @@ public class BreakingBadServiceTest {
         bbService.executeCommand(1, examineCommand);
         assertEquals(bbService.getGame(1).getMessage(), gameEngine.displayRoom(currentRoom));
     }
+    /*
+   Tests the history command on the BreakingBad Adventure Service class
+    */
     @Test
     public void TestHistoryOnWeb() throws AdventureException {
         bbService.reset();
@@ -107,22 +128,33 @@ public class BreakingBadServiceTest {
         bbService.executeCommand(1, examineCommand);
         assertEquals(bbService.getGame(1).getMessage(), gameEngine.getHistoryOfRooms());
     }
+    /*
+  Tests an invalid input in the executeCommand method on the BreakingBad Adventure Service class
+   */
     @Test
     public void TestInvalidInputOnWeb() throws AdventureException {
         bbService.reset();
         bbService.newGame();
         Command weirdCommand = new Command("hi", "bob");
         bbService.executeCommand(1, weirdCommand);
-        assertEquals(bbService.getGame(1).getMessage(), "I cannot understand " + weirdCommand.getCommandValue() + "!");
+        assertEquals(bbService.getGame(1).getMessage(), "I cannot understand " + weirdCommand.getCommandValue() + "!"
+        + "\n" + gameEngine.displayRoom(gameEngine.getCurrentRoom()));
     }
+    /*
+  Tests an null input in the executeCommand method on the BreakingBad Adventure Service class
+   */
     @Test
     public void TestNullInputOnWeb() throws AdventureException {
         bbService.reset();
         bbService.newGame();
         Command weirdCommand = new Command(null, null);
         bbService.executeCommand(1, weirdCommand);
-        assertEquals(bbService.getGame(1).getMessage(), "I cannot understand null!");
+        assertEquals(bbService.getGame(1).getMessage(), "I cannot understand null!" +
+                "\n" + gameEngine.displayRoom(gameEngine.getCurrentRoom()));
     }
+    /*
+    Tests two consecutive commands in the same service and gameStatus object.
+     */
     @Test
     public void TestConsecutiveCommands() throws AdventureException {
         bbService.reset();

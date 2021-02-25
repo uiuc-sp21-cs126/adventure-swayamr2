@@ -5,22 +5,20 @@ import student.adventure.AdventureDesign;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 @Path("/")
 public class AdventureResource {
     /**
      * The single static adventure service instance used for this API.
      */
-    private static BreakingBadAdventureService breakingBadAdventureService = new BreakingBadAdventureService();
+    private static AdventureService breakingBadAdventureService = new BreakingBadAdventureService();
 
     /**
      * The API endpoint to test connectivity.
      * @return the string "pong" if connection was successful
      */
     @GET
-    @Path("ping")
+    @Path("/ping")
     public String ping() {
-        // TODO: This method should return `pong`.
         return "pong";
     }
 
@@ -92,7 +90,6 @@ public class AdventureResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response handleCommand(@PathParam("id") int id, Command command) {
         breakingBadAdventureService.executeCommand(id, command);
-
         return getGame(id);
     }
 
