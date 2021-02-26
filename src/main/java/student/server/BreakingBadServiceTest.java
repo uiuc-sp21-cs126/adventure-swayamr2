@@ -13,9 +13,6 @@ import org.junit.Test;
 import student.adventure.AdventureDesign;
 import student.adventure.GameEngine;
 import student.adventure.Room;
-import student.server.AdventureException;
-import student.server.AdventureService;
-import student.server.BreakingBadAdventureService;
 
 import static org.junit.Assert.assertEquals;
 public class BreakingBadServiceTest {

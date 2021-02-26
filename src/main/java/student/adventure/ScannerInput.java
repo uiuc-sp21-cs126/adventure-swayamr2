@@ -17,10 +17,14 @@ public class ScannerInput {
         GameEngine gameEngine = new GameEngine(file);
         System.out.println(gameEngine.getMessage());
         System.out.println(gameEngine.displayRoom(gameEngine.getCurrentRoom()));
+        boolean gameDone = false;
         while(true) {
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
-            gameEngine.inputFromWeb(input);
+            gameDone = gameEngine.inputFromWeb(input);
+            if(gameDone) {
+                return;
+            }
             System.out.println(gameEngine.getMessage());
         }
     }

@@ -17,7 +17,7 @@ public class AdventureResource {
      * @return the string "pong" if connection was successful
      */
     @GET
-    @Path("/ping")
+    @Path("ping")
     public String ping() {
         return "pong";
     }
