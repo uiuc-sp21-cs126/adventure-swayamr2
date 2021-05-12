@@ -1,15 +1,16 @@
 package student.server;
 
+import student.adventure.AdventureDesign;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 @Path("/")
 public class AdventureResource {
     /**
      * The single static adventure service instance used for this API.
      */
-    private static AdventureService service; // = new YourAdventureServiceHere();
+    private static AdventureService breakingBadAdventureService = new BreakingBadAdventureService();
 
     /**
      * The API endpoint to test connectivity.
@@ -18,8 +19,7 @@ public class AdventureResource {
     @GET
     @Path("ping")
     public String ping() {
-        // TODO: This method should return `pong`.
-        return "";
+        return "pong";
     }
 
     /**
@@ -29,7 +29,7 @@ public class AdventureResource {
     @POST
     @Path("reset")
     public Response reset() {
-        service.reset();
+        breakingBadAdventureService.reset();
         return Response.ok().build();
     }
 
@@ -42,7 +42,7 @@ public class AdventureResource {
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
     public Response create() throws AdventureException {
-        int id = service.newGame();
+        int id = breakingBadAdventureService.newGame();
         return getGame(id);
     }
 
@@ -55,7 +55,7 @@ public class AdventureResource {
     @Path("instance/{id: \\d+}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getGame(@PathParam("id") int id) {
-        GameStatus status = service.getGame(id);
+        GameStatus status = breakingBadAdventureService.getGame(id);
         if (status == null) {
             return instanceNotFound(id);
         }
@@ -71,7 +71,7 @@ public class AdventureResource {
     @Path("instance/{id: \\d+}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response destroyGame(@PathParam("id") int id) {
-        if (!service.destroyGame(id)) {
+        if (!breakingBadAdventureService.destroyGame(id)) {
             return instanceNotFound(id);
         }
 
@@ -89,8 +89,7 @@ public class AdventureResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response handleCommand(@PathParam("id") int id, Command command) {
-        service.executeCommand(id, command);
-
+        breakingBadAdventureService.executeCommand(id, command);
         return getGame(id);
     }
 
@@ -102,7 +101,7 @@ public class AdventureResource {
     @Path("leaderboard")
     @Produces(MediaType.APPLICATION_JSON)
     public Response fetchLeaderboard() {
-        return Response.ok(service.fetchLeaderboard()).build();
+        return Response.ok(breakingBadAdventureService.fetchLeaderboard()).build();
     }
 
     /**

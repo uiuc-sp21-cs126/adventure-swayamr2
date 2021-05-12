@@ -56,7 +56,9 @@ public class GameStatus {
         this.state = state;
         this.commandOptions = commandOptions;
     }
+    public GameStatus() {
 
+    }
     public boolean isError() {
         return error;
     }
